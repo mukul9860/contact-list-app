@@ -23,7 +23,7 @@ const AddEdit = () => {
     const submitHandler = (event) => {
         event.preventDefault();
         if(!name || !email || !contact){
-            toast.error("Fields cannot be empty...☹");
+            toast.error("Fields cannot be empty...😔");
         }
         else{
             firedb.child("contactDB").push(state, (error) => {
