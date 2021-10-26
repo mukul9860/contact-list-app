@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import firedb from '../firebase';
 import { toast } from 'react-toastify';
 import './styles.css';
+import { useHistory } from 'react-router-dom';
 
 const initialState = {
     name: "",
@@ -12,13 +13,29 @@ const AddEdit = () => {
     const [state, setState] = useState(initialState);
     const [data, setData] = useState({});
     const { name, email, contact } = state;
+    const history = useHistory();
     
-    const inputChangeHandler = () => {
-
+    const inputChangeHandler = (event) => {
+        const {name, value} = event.target;
+        setState({...state, [name]: value});
     }
 
-    const submitHandler = () => {
-
+    const submitHandler = (event) => {
+        event.preventDefault();
+        if(!name || !email || !contact){
+            toast.error("Fields cannot be empty...☹");
+        }
+        else{
+            firedb.child("contactDB").push(state, (error) => {
+                if(error){
+                    toast.error(error);
+                }
+                else{
+                    toast.success("Contact added successfully...🙂")
+                }
+            });
+            setTimeout(() => history.push("/"), 500);
+        }
     }
 
     return (
@@ -31,7 +48,7 @@ const AddEdit = () => {
                 <input type="email" id="email" className="form-control" name="email" placeholder="Enter Email" value={email} onChange={inputChangeHandler} />           
 
                 <label htmlFor="contact" className="mt-4">Contact number</label>
-                <input type="tel" id="contact" className="form-control" name="contact" placeholder="Enter contact number" value={contact} onChange={inputChangeHandler} />
+                <input type="text" id="contact" className="form-control" name="contact" placeholder="Enter contact number" value={contact} onChange={inputChangeHandler} maxLength={10} />
             
                 <button type="submit" className="btn btn-success mt-4 w-100 btn-lg">Save Contact</button>
             </form>
