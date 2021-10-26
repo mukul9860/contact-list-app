@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import firedb from '../firebase';
 import { Link } from 'react-router-dom';
 import './styles.css';
+import { toast } from 'react-toastify';
 
 const Home = () => {
     const [data, setData] = useState({});
@@ -19,6 +20,20 @@ const Home = () => {
             setData({});
         }
     }, []);
+
+    const deleteDetails = (id) => {
+        if(window.confirm("Are you sure to delete...")){
+            firedb.child(`contactDB/${id}`).remove((error) => {
+                if(error){
+                    toast.error(error);
+                }
+                else{
+                    toast.success("Sucessfully Deleted");
+                }
+            })
+        }
+    }
+
     return (
         <div className="mt-5 table-responsive table-style">
             <table className="table table-bordered table-hover">
@@ -43,7 +58,7 @@ const Home = () => {
                                     <Link to={`/edit/${id}`}>
                                         <button className="btn btn-primary btn-sm">Edit</button>
                                     </Link>
-                                    <button className="btn btn-danger btn-sm ml-2">Delete</button>
+                                    <button className="btn btn-danger btn-sm ml-2" onClick={() => deleteDetails(id)}>Delete</button>
                                     <Link to={`/view/${id}`}>
                                         <button className="btn btn-warning btn-sm ml-2">View</button>
                                     </Link>
