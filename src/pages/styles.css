@@ -5,6 +5,9 @@
     max-width: 400px;
     align-content: center;
 }
+.lower{
+    text-transform: lowercase;
+}
 
 /* Home page styles */
 .table-style{
@@ -17,4 +20,12 @@
         width: 100%;
     }
     
+}
+
+/* SearchPage style */
+
+.btn_back{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

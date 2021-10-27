@@ -11,8 +11,6 @@ const Header = () => {
             setTab("Home");
         } else if (location.pathname === "/add") {
             setTab("AddContact");
-        } else if (location.pathname === "/about") {
-            setTab("About");
         }
     }, [location])
 
@@ -40,14 +38,6 @@ const Header = () => {
                                     className={`${activeTab === "AddContact" ? "active" : "nav-link-text"}`}
                                     onClick={() => setTab("AddContact")}>
                                     Add Contact</p>
-                            </Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to="/about">
-                                <p
-                                    className={`${activeTab === "About" ? "active" : "nav-link-text"}`}
-                                    onClick={() => setTab("About")}>
-                                    About</p>
                             </Link>
                         </li>
                     </ul>

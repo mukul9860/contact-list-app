@@ -3,6 +3,7 @@ import firedb from '../firebase';
 import { Link } from 'react-router-dom';
 import './styles.css';
 import { toast } from 'react-toastify';
+import Search from '../components/Search/Search';
 
 const Home = () => {
     const [data, setData] = useState({});
@@ -10,7 +11,7 @@ const Home = () => {
     useEffect(() => {
         firedb.child("contactDB").on("value", (snapshot) => {
             if (snapshot.val() !== null) {
-                setData({ ...snapshot.val() });
+                setData({ ...snapshot.val()});
             }
             else {
                 setData({});
@@ -35,7 +36,9 @@ const Home = () => {
     }
 
     return (
-        <div className="mt-5 table-responsive table-style">
+        <>
+        <Search />
+        <div className="mt-4 table-responsive table-style">
             <table className="table table-bordered table-hover">
                 <thead className="thead-dark">
                     <tr>
@@ -56,7 +59,7 @@ const Home = () => {
                                 <td>{data[id].contact}</td>
                                 <td>
                                     <Link to={`/edit/${id}`}>
-                                        <button className="btn btn-primary btn-sm">Edit</button>
+                                        <button className="btn btn-primary btn-sm ml-2">Edit</button>
                                     </Link>
                                     <button className="btn btn-danger btn-sm ml-2" onClick={() => deleteDetails(id)}>Delete</button>
                                     <Link to={`/view/${id}`}>
@@ -69,6 +72,7 @@ const Home = () => {
                 </tbody>
             </table>
         </div>
+        </>
     )
 }
 
