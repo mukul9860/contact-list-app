@@ -44,7 +44,7 @@ const AddEdit = () => {
     },[id, data])
 
     const inputChangeHandler = (event) => {
-        let { name, value } = event.target;
+        const { name, value } = event.target;
         setState({ ...state, [name]: value });
     }
 
