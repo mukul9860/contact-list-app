@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Link, useLocation } from 'react-router-dom';
 import './Header.css';
+import Search from '../Search/Search';
 
 const Header = () => {
     const [activeTab, setTab] = useState("Home");
@@ -32,13 +33,16 @@ const Header = () => {
                                     Home</p>
                             </Link>
                         </li>
-                        <li className="nav-item">
+                        <li className="nav-item mr-5">
                             <Link className="nav-link" to="/add">
                                 <p
                                     className={`${activeTab === "AddContact" ? "active" : "nav-link-text"}`}
                                     onClick={() => setTab("AddContact")}>
                                     Add Contact</p>
                             </Link>
+                        </li>
+                        <li>
+                            <Search />
                         </li>
                     </ul>
                 </div>
