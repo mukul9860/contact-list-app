@@ -1,31 +1,44 @@
 /* AddEdit styles */
-.form-body{
-    margin: auto;
-    padding: 15px;
-    max-width: 400px;
-    align-content: center;
+.form-body {
+  margin: auto;
+  margin-top: 50px;
+  padding: 30px;
+  width: 50%;
+  border: 1px solid #bfbfbf;
+  background-color: white;
+  box-shadow: 10px 10px 5px #aaaaaa;
 }
-.lower{
-    text-transform: lowercase;
+.lower {
+  text-transform: lowercase;
+}
+
+@media screen and (max-width: 700px) {
+  .form-body {
+    width: 90%;
+  }
 }
 
 /* Home page styles */
-.table-style{
-    width: 70%;
-    margin: auto;
+.table-style {
+  width: 70%;
+  margin: auto;
 }
+.action_ic{
+  background: transparent;
+}
+.action_ic:hover{
+  transform: scale(1.5);}
 
 @media screen and (max-width: 600px) {
-    .table-style{
-        width: 100%;
-    }
-    
+  .table-style {
+    width: 100%;
+  }
 }
 
 /* SearchPage style */
 
-.btn_back{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.btn_back {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

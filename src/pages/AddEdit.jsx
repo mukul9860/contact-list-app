@@ -80,7 +80,8 @@ const AddEdit = () => {
     }
 
     return (
-        <div className="mt-5">
+        <div>
+            <h1 className="text-center mt-3">{id ? "Edit " : "Add "}Contact</h1>
             <form className="form-body" onSubmit={submitHandler}>
                 <label htmlFor="name">Name</label>
                 <input type="text" id="name" className="form-control lower" name="name" placeholder="Enter name" value={name || ""} onChange={inputChangeHandler} />

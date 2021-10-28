@@ -48,7 +48,7 @@ const Home = () => {
     }
     const clearHandler = () => {
         setIsSort(false);
-        document.getElementById("search").value ="Please select sort by"
+        document.getElementById("search").value = "Please select sort by"
     }
     return (
         <>
@@ -80,12 +80,21 @@ const Home = () => {
                                         <td>{data[id].contact}</td>
                                         <td>
                                             <Link to={`/edit/${id}`}>
-                                                <button className="btn btn-primary btn-sm ml-2">Edit</button>
+                                                <button className="btn ml-4 text-primary action_ic" data-toggle="tooltip" title="Edit contact">
+                                                    <i className="fa fa-pencil-square-o"></i>
+                                                </button>
                                             </Link>
-                                            <button className="btn btn-danger btn-sm ml-2" onClick={() => deleteDetails(id)}>Delete</button>
+
                                             <Link to={`/view/${id}`}>
-                                                <button className="btn btn-warning btn-sm ml-2">View</button>
+                                                <button className="btn ml-4 action_ic" data-toggle="tooltip" title={`View ${data[id].name} contact`}>
+                                                    <i className="fa fa-eye"></i>
+                                                    </button>
                                             </Link>
+
+                                            <button className="btn ml-4 text-danger action_ic" data-toggle="tooltip" title={`Delete ${data[id].contact}`} onClick={() => deleteDetails(id)}>
+                                                <i className="fa fa-trash-o"></i>
+                                            </button>
+
                                         </td>
                                     </tr>
                                 )
